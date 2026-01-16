@@ -1,0 +1,29 @@
+menambah vlan ( contoh vlan 100 ) pada interface em1 sbb :
+
+# ifconfig em1.100 create
+
+# ifconfig em1.100 192.168.100.1/24 
+
+# ifconfig em1.100 inet6 001:470:1e04:5ea::10/64
+
+# ifconfig em1.100 inet6 001:470:1e04:5ea::10 prefixlen 64
+supaya tidak hilang ketika reboot , maka di tambahkan ke /etc/rc.conf
+
+# vlans_em1="100" 
+# ifconfig_em1_100="inet 192.168.100.1/24" 
+# ifconfig_em1_100_ipv6="inet6 001:470:1e04:5ea::10/64"
+menghapus interface vlan
+
+#ifconfig em1.100 destroy
+
+# Untuk mce0 dan semua VLAN-nya
+ifconfig mce0 mtu 9000
+for vlan in 111 600 601 602 606 607 608 610 2910 201 202; do
+    ifconfig mce0.${vlan} mtu 9000
+done
+
+# Untuk mce1 dan semua VLAN-nya
+ifconfig mce1 mtu 9000
+for vlan in 150 769 2083; do
+    ifconfig mce1.${vlan} mtu 9000
+done
