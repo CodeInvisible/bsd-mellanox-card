@@ -6,3 +6,18 @@ mv boot/modules/if_re.ko /boot/modules/
 # vi /boot/loader.conf
 if_re_load="YES"
 if_re_name="/boot/modules/if_re.ko"
+
+
+atau bisa install driver via pkg
+--------------------------------
+
+# pkg install realtek-re-kmod
+
+#pastikan module ada di folder /boot/modules
+
+# ls -l /boot/modules/if_re.ko
+
+#panggil di /boot/loader.conf
+
+if_re_load="YES"
+if_re_name="/boot/modules/if_re.ko"
